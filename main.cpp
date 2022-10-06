@@ -1,5 +1,5 @@
 #include <iostream>
-#include <Eigen/Dense>
+#include "eigen3/Eigen/Dense"
 #include <memory>
 #include <chrono>
 
@@ -22,12 +22,16 @@ void find_target_coords() {
     double lat = 31.4826 ;
     double alt = 125 - 61;
 
-    double realR = 0.;
-    double realP = 0.;
-    double realY = 0.;
-    double r = 0.;
-    double p = 0.;
-    double y = 0.;
+    double lon = 31.4871762;
+    double lat = 59.8393154 ;
+    double alt = 161.155 ; //- 61;
+
+    double realR = -4.97;
+    double realP = 48.88;
+    double realY = +1.19 + 12;
+    double r = 0.41;
+    double p = -1.17;
+    double y = -3.3;
 
     auto x_coord = 500;
     auto y_coord = 500;
@@ -127,4 +131,12 @@ void find_target_coords() {
              << "target_in_rotated_drone" << std::endl << target_in_rotated_drone->transpose() << std::endl
              << "target_in_math_point" << std::endl << target_in_math_point->transpose() << std::endl
              << "target_in_world" << std::endl << target_in_world->transpose() << std::endl;
+
+
+
+}
+
+int main(){
+    find_target_coords();
+    return 0;
 }

@@ -1,6 +1,6 @@
 
-#include "CrsPose.h"
-#include "Eigen/Dense"
+#include "crsPose.h"
+#include "eigen3/Eigen/Dense"
 
 using Eigen::Vector3d;
 using Eigen::Matrix3d;

@@ -7,7 +7,7 @@
 
 #include <cmath>
 #include <memory>
-#include "Eigen/Dense"
+#include "eigen3/Eigen/Dense"
 
 Eigen::Vector3d pixel2local(const Eigen::Vector3d &pixel_coords, const Eigen::Matrix3d &intrinsic_matrix);
 
