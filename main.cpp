@@ -18,9 +18,8 @@ void find_target_coords() {
                         0., 405., 359.,
                         0., 0., 1.;
 
-    double lon = 59.8352;
-    double lat = 31.4826 ;
-    double alt = 125 - 61;
+    //        let dronepos = new Vector3(59.8352, 31.4826, 125)
+    //        let camrpy = new Vector3(-0.95,-30,-160.5)
 
     double lon = 31.4871762;
     double lat = 59.8393154 ;
@@ -33,8 +32,8 @@ void find_target_coords() {
     double p = -1.17;
     double y = -3.3;
 
-    auto x_coord = 500;
-    auto y_coord = 500;
+    auto x_coord = 627;
+    auto y_coord = 449;
 
     auto t_rotated_drone_to_camera = std::make_shared<Eigen::Vector3d>(0,0,1.5);
 
@@ -46,7 +45,7 @@ void find_target_coords() {
 
     auto cam_rpy = make_shared<Vector3d>(-realR, realP, realY);
 
-    *cam_rpy += Vector3d {0, 0, -12};
+    *cam_rpy += Vector3d {0, 0, 0};
 
     auto t_world_to_math_point = transform_coords(uav_lonlat, LONLAT_CRS, ECEF_CRS);
     auto R_world_to_math_point = calculate_rotation_matrix_to_pose_on_Earth_globe(uav_lonlat);
@@ -95,14 +94,15 @@ void find_target_coords() {
             local2world(*target_in_rotated_drone, *R_math_point_to_rotated_drone, *t_math_point_to_rotated_drone));
     auto target_in_world = make_shared<Vector3d>(
             local2world(*target_in_math_point, *R_world_to_math_point, *t_world_to_math_point));
-    //std::cout.precision(15);
-    //std::cout<<"TARGET: "<<*target_in_world<<" "<<transform_coords(*target_in_world, ECEF_CRS, LONLAT_CRS)<<std::endl;
+//    std::cout.precision(15);
+//    std::cout<<"TARGET: "<<*target_in_world<<" "<<transform_coords(*target_in_world, ECEF_CRS, LONLAT_CRS)<<std::endl;
     auto time = std::chrono::high_resolution_clock::now().time_since_epoch().count();
     auto secs = time / 1000000000;
     auto millisecs = (time - secs * 1000000000) / 1000000;
     auto microsecs = (time - secs * 1000000000 - millisecs * 1000000) / 1000;
     auto nanosecs = time - secs * 1000000000 - millisecs * 1000000 - microsecs * 1000;
     //int old_precision = logfile->precision();
+    std::cout.precision(15);
     std::cout << std::endl
              << "--------------------------------------------------------------------------" << std::endl
              << "find_target_coords" << std::endl
