@@ -21,30 +21,29 @@ void find_target_coords() {
     //        let dronepos = new Vector3(59.8352, 31.4826, 125)
     //        let camrpy = new Vector3(-0.95,-30,-160.5)
 
-    double lon = 31.4871762;
-    double lat = 59.8393154 ;
-    double alt = 161.155 ; //- 61;
+    double lon = 31.482354;
+    double lat = 59.8322189;
+    double alt = 102.62;
 
-    double realR = -4.97;
-    double realP = 48.88;
-    double realY = +1.19 + 12;
-    double r = 0.41;
-    double p = -1.17;
-    double y = -3.3;
+    double realR = -6.57;
+    double realP = -50.67;
+    double realY = -114.21;
 
-    auto x_coord = 627;
-    auto y_coord = 449;
+    double r =  -8.18;
+    double p = 3.08;
+    double y = -76.04;
+
+    auto x_coord = 596 + 116/2;
+    auto y_coord = 308 + 104/2;
 
     auto t_rotated_drone_to_camera = std::make_shared<Eigen::Vector3d>(0,0,1.5);
 
     auto uav_lonlat = make_shared<Vector3d>(lon, lat, alt);
     double cam_alt = alt - 1.5;
-    auto uav_rpy = make_shared<Vector3d>(-r, p, y);  // 0 0 0
+    auto uav_rpy = make_shared<Vector3d>(-r, -p, y);  // 0 0 0
 
 
-
-    auto cam_rpy = make_shared<Vector3d>(-realR, realP, realY);
-
+    auto cam_rpy = make_shared<Vector3d>(-realR, -realP, realY);
     *cam_rpy += Vector3d {0, 0, 0};
 
     auto t_world_to_math_point = transform_coords(uav_lonlat, LONLAT_CRS, ECEF_CRS);
